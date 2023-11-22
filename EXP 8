@@ -1,0 +1,37 @@
+###CREATING TABLE ITEMS
+create table items(item_id int primary key,item_name varchar(50),category varchar(20),price int,instock int check(instock>=0));
+insert into items values( 1,'batman','toys',10,2);
+insert into items values( 2,'laptop','electronics',699,5);
+insert into items values( 3,'galaxy s4','electronics',500,15);
+insert into items values( 4,'tata sumo','vehicles',111,20);
+insert into items values( 5,'sony z5 premium','electronics',5005,1);
+insert into items values( 1,'batman','toys',10,2);
+
+###CREATING TABLE CUSTOMER 
+create table customer(custid int primary key,custname varchar(20),address varchar(20),state varchar(20));
+insert into customer values(111,'elvin','202 jai street','delhi');
+insert into customer values(112,'patrick','street 1 harinagar','chennai');
+insert into customer values(113,'soman','puthumana p o','kerala');
+insert into customer values(114,'jaise','kottarakara','kerala');
+insert into customer values(115,'mickey','juhu','mumabi');ins
+
+###CREATING TABLE ORDERS
+create table orders(order_id int primary key,custid int,item_id int,quantity int,orderdate date);
+alter table orders add foreign key(item_id) references items(item_id) add foreign key(custid) references customer(custid);
+
+insert into orders values(911,111,1,50,'11-oct-2014');
+insert into orders values(912,113,3,25,'29-JAN-2012');
+insert into orders values(913,115,5,33,'16-may-2013');
+insert into orders values(914,114,4,35,'22-dec-2014');
+
+###CREATING TABLE DELIVERY
+create table delivery(deliveryid int primary key,custid int,orderid int);
+alter table delivery add foreign key(custid) references customer(custid) add foreign key(orderid) references orders(order_id);
+
+insert into delivery values(667,115,914);
+insert into delivery values(669,111,911);
+insert into delivery values(670,113,912);
+
+1.select * from customer where custid in(select custid from orders);
+2.select * from customer where custid in(select custid from delivery);
+3.select orderdate from orders where custid in(select custid from customer where custname like'j%');
