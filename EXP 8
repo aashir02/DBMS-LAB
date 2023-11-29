@@ -35,3 +35,6 @@ insert into delivery values(670,113,912);
 1.select * from customer where custid in(select custid from orders);
 2.select * from customer where custid in(select custid from delivery);
 3.select orderdate from orders where custid in(select custid from customer where custname like'j%');
+4.select item_name,price from items where item_id in(select  item_id from orders where custid in(select custid from customer where custname='mickey'));
+5.select * from customer where custid in(select custid from orders where orderdate>'31-jan-2013' and order_id not in(select orderid from delivery));
+6.select item_id from orders union select item_id from orders where custid in(select custid from delivery);
