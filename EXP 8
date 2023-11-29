@@ -5,7 +5,7 @@ insert into items values( 2,'laptop','electronics',699,5);
 insert into items values( 3,'galaxy s4','electronics',500,15);
 insert into items values( 4,'tata sumo','vehicles',111,20);
 insert into items values( 5,'sony z5 premium','electronics',5005,1);
-insert into items values( 1,'batman','toys',10,2);
+
 
 ###CREATING TABLE CUSTOMER 
 create table customer(custid int primary key,custname varchar(20),address varchar(20),state varchar(20));
@@ -13,7 +13,7 @@ insert into customer values(111,'elvin','202 jai street','delhi');
 insert into customer values(112,'patrick','street 1 harinagar','chennai');
 insert into customer values(113,'soman','puthumana p o','kerala');
 insert into customer values(114,'jaise','kottarakara','kerala');
-insert into customer values(115,'mickey','juhu','mumabi');ins
+insert into customer values(115,'mickey','juhu','mumabi');
 
 ###CREATING TABLE ORDERS
 create table orders(order_id int primary key,custid int,item_id int,quantity int,orderdate date);
